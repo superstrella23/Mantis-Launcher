@@ -1,5 +1,5 @@
 /**
- * @author Luuxis
+ * @author superstrella
  * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0/
  */
 
@@ -18,7 +18,7 @@ import Settings from './panels/settings.js';
 class Launcher {
     async init() {
         this.initLog();
-        console.log("Initializing Launcher...");
+        console.log("Inicializando Launcher...");
         if (process.platform == "win32") this.initFrame();
         this.config = await config.GetConfig().then(res => res);
         this.news = await config.GetNews().then(res => res);
@@ -37,22 +37,12 @@ class Launcher {
     }
 
     initFrame() {
-        console.log("Initializing Frame...")
+        console.log("Inicializando Frame...")
         document.querySelector(".frame").classList.toggle("hide")
         document.querySelector(".dragbar").classList.toggle("hide")
 
         document.querySelector("#minimize").addEventListener("click", () => {
             ipcRenderer.send("main-window-minimize");
-        });
-
-        let maximized = false;
-        let maximize = document.querySelector("#maximize")
-        maximize.addEventListener("click", () => {
-            if (maximized) ipcRenderer.send("main-window-maximize")
-            else ipcRenderer.send("main-window-maximize");
-            maximized = !maximized
-            maximize.classList.toggle("icon-maximize")
-            maximize.classList.toggle("icon-restore-down")
         });
 
         document.querySelector("#close").addEventListener("click", () => {
@@ -63,7 +53,7 @@ class Launcher {
     createPanels(...panels) {
         let panelsElem = document.querySelector(".panels")
         for (let panel of panels) {
-            console.log(`Initializing ${panel.name} Panel...`);
+            console.log(`Inicializando ${panel.name} Panel...`);
             let div = document.createElement("div");
             div.classList.add("panel", panel.id)
             div.innerHTML = fs.readFileSync(`${__dirname}/panels/${panel.id}.html`, "utf8");
@@ -82,7 +72,7 @@ class Launcher {
             for (let account of accounts) {
                 account = account.value;
                 if (account.meta.type === 'Xbox') {
-                    console.log(`Initializing Xbox account ${account.name}...`);
+                    console.log(`Inicializando Xbox account ${account.name}...`);
                     let refresh = await new Microsoft(this.config.client_id).refresh(account);
                     let refresh_accounts;
                     let refresh_profile;
@@ -115,7 +105,7 @@ class Launcher {
                     if (account.uuid === selectaccount) accountSelect(refresh.uuid)
                 } else if (account.meta.type === 'Mojang') {
                     if (!account.meta.online) {
-                    console.log(`Initializing Crack account ${account.name}...`);
+                    console.log(`Inicializando Crack account ${account.name}...`);
                         addAccount(account);
                         if (account.uuid === selectaccount) accountSelect(account.uuid)
                         continue;
@@ -130,7 +120,7 @@ class Launcher {
                     }
 
                     let refresh = await Mojang.refresh(account);
-                    console.log(`Initializing Mojang account ${account.name}...`);
+                    console.log(`Inicializando Mojang account ${account.name}...`);
                     let refresh_accounts;
 
                     if (refresh.error) {

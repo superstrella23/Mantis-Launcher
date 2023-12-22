@@ -1,5 +1,5 @@
 /**
- * @author Luuxis
+ * @author superstrella
  * @license CC-BY-NC 4.0 - https://creativecommons.org/licenses/by-nc/4.0/
  */
 
@@ -22,7 +22,7 @@ function destroyWindow() {
 function createWindow() {
     destroyWindow();
     updateWindow = new electron.BrowserWindow({
-        title: "Mise à jour",
+        title: "Manti's Launcher - Auto-Updater",
         width: 400,
         height: 500,
         resizable: false,
