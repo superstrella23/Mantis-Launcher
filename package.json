@@ -5,7 +5,7 @@
     "description": "Launcher Oficial de Manti's Studios",
     "main": "src/app.js",
     "author": "superstrella",
-    "url": "http://mantistudio.x10.mx/launchergenreal/",
+    "url": "http://mantistudio.x10.mx/launchergenreal",
     "engines": {
         "node": ">18.x.x"
     },
