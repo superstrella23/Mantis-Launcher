@@ -256,7 +256,7 @@
     position: absolute;
     width: 62px;
     height: 62px;
-    top: 15px;
+    top: 7px;
     left: 15px;
 }
 
@@ -267,7 +267,7 @@
     top: 17px;
     left: 70px;
     transition: color .2s;
-    margin-left:350px;
+    margin-left: 350px;
 }
 
 .desc {
